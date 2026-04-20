@@ -1,0 +1,6 @@
+# Vendored operator manifests — regenerate with `make operator-vendor`
+# Remove this line if you prefer to commit the manifest for full offline reproducibility.
+operator/cnpg-*.yaml
+
+# macOS
+.DS_Store

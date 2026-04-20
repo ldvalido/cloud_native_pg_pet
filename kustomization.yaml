@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Apply in order: operator first, then cluster.
+# The operator must be Ready before the cluster resources are created.
+#
+#   Step 1:  kubectl apply -k operator/
+#            kubectl wait --for=condition=Available deployment/cnpg-controller-manager \
+#              -n cnpg-system --timeout=120s
+#   Step 2:  kubectl apply -k cluster/
+#
+# For GitOps controllers (Flux / ArgoCD) create two separate Application/Kustomization
+# resources pointing to operator/ and cluster/ with a dependency between them.
+
+resources:
+  - operator/
+  - cluster/

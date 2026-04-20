@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  # Vendored operator manifest — run `make operator-vendor` to download or upgrade.
+  # The upstream manifest already includes the cnpg-system Namespace.
+  - cnpg-1.25.1.yaml

@@ -1,0 +1,21 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: postgres-ssd
+  annotations:
+    # Replace the provisioner with the one available in your cluster:
+    #   k3s / Rancher Desktop : rancher.io/local-path
+    #   Docker Desktop         : docker.io/hostpath
+    #   AWS EKS                : ebs.csi.aws.com  (use gp3 parameters below)
+    #   GKE                    : pd.csi.storage.gke.io
+    #   Azure AKS              : disk.csi.azure.com
+provisioner: rancher.io/local-path
+volumeBindingMode: WaitForFirstConsumer
+reclaimPolicy: Retain
+allowVolumeExpansion: true
+
+# Uncomment and adjust for cloud-provider SSD volumes (e.g., AWS gp3):
+# parameters:
+#   type: gp3
+#   iops: "3000"
+#   throughput: "125"
